@@ -7,3 +7,9 @@ groq
 google-generativeai
 google-genai
 tiktoken
+
+chromadb
+sentence-transformers
+pypdf python-docx
+markdown-it-py
+python-multipart

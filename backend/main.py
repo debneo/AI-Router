@@ -1,11 +1,14 @@
+from dotenv import load_dotenv
+load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
-from dotenv import load_dotenv
+
 
 from routers.chat_router import router as chat_router
+from routers.ingest_router import router as ingest_router
 
-load_dotenv()
+
 FRONTEND_ORIGIN = os.getenv("FRONTEND_ORIGIN","http://localhost:3000")
 
 app = FastAPI(title="Ask AI")
@@ -24,4 +27,5 @@ def health():
 
 # main.py is entry point
 app.include_router(chat_router)
+app.include_router(ingest_router)
 

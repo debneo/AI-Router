@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel,Field
 
 from lib.connectors.llm import get_llm
+from services.rag import answer_question
 
 # router is a mini app
 router = APIRouter(tags=["Chat"])
@@ -15,12 +16,16 @@ class ChatRequest(BaseModel):
 
 @router.post("/chat")
 def chat(req:ChatRequest):
-    # for now just echo
+    result = answer_question(req.message)
+    return {"response":result["answer"],"sources":result["sources"]}
+
+@router.post("/greet")
+def greet(req:ChatRequest):
     llm = get_llm()
     answer = llm.complete(
         [
-            {"role":"system", "content":"You are a concise, helpful assistant."},
-            {"role":"user", "content":req.message},
+            {"role":"system","content":"You are a concise, helpful assistant"},
+            {"role":"user","content":req.message},
         ]
     )
     return {"response":answer}
