@@ -41,7 +41,7 @@ class GeminiClient:
         # The new SDK automatically reads GEMINI_API_KEY from os.environ by default,
         # but passing it explicitly guarantees it uses your exact key variable.
         self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-        self.model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        self.model_name = os.getenv("GEMINI_MODEL", "gemini-3.6-flash")
 
     def _to_prompt(self, messages: Messages) -> str:
         return "\n".join(f"{m['role']}: {m['content']}" for m in messages)
