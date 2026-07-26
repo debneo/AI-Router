@@ -10,6 +10,7 @@ import traceback
 
 from routers.chat_router import router as chat_router
 from routers.ingest_router import router as ingest_router
+from routers.solutions_router import router as solutions_router
 
 
 FRONTEND_ORIGIN = os.getenv("FRONTEND_ORIGIN","http://localhost:3000")
@@ -42,4 +43,4 @@ def health():
 # main.py is entry point
 app.include_router(chat_router)
 app.include_router(ingest_router)
-
+app.include_router(solutions_router)
