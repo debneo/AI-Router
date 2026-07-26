@@ -1,0 +1,54 @@
+(.venv) PS E:\CODE\AI Router\backend> python -c "from dotenv import load_dotenv; load_dotenv(); from solutions.qa.orchestrators.answer_flow import root; import json; print(json.dumps(root({'question': 'What is precipitation?'}), indent=2))"
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|███████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 6206.02it/s]
+Loading weights: 100%|███████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 5118.16it/s]
+{
+  "question": "What is precipitation?",
+  "chunks": [
+    {
+      "text": " can drive atmospheric circulation NASA. Precipitation \nPrecipitation occurs when condensed water droplets or ice crystals in clouds grow large \nenough to fall to the Earth's surface due to gravity.\nThis includes rain, snow, sleet, or hail. Precipitation returns water from the atmosphere to the land and oceans, replenishing \nfreshwater sources and completing the cycle National Oceanic and Atmospheric \nAdministration+2. The type and amount of precipitation depend on temperature, cloud type, \nand atmospheric conditions. Together, these three processes form a continuous cycle that distributes water across the \nplanet, supports ecosystems, and in\ufb02uences weather and climate patterns",
+      "metadata": {
+        "filename": "ask.pdf",
+        "doc_id": "bf198dc1-eea8-4ebf-875f-0a19780f2980",
+        "chunk_index": 1
+      },
+      "score": 6.840701103210449
+    },
+    {
+      "text": " can drive atmospheric circulation NASA. Precipitation \nPrecipitation occurs when condensed water droplets or ice crystals in clouds grow large \nenough to fall to the Earth's surface due to gravity.\nThis includes rain, snow, sleet, or hail. Precipitation returns water from the atmosphere to the land and oceans, replenishing \nfreshwater sources and completing the cycle National Oceanic and Atmospheric \nAdministration+2. The type and amount of precipitation depend on temperature, cloud type, \nand atmospheric conditions. Together, these three processes form a continuous cycle that distributes water across the \nplanet, supports ecosystems, and in\ufb02uences weather and climate patterns",
+      "metadata": {
+        "chunk_index": 1,
+        "filename": "ask.pdf",
+        "doc_id": "2971b0c8-0f6c-469e-bf2f-fd659811c78b"
+      },
+      "score": 6.840701103210449
+    },
+    {
+      "text": " can drive atmospheric circulation NASA. Precipitation \nPrecipitation occurs when condensed water droplets or ice crystals in clouds grow large \nenough to fall to the Earth's surface due to gravity.\nThis includes rain, snow, sleet, or hail. Precipitation returns water from the atmosphere to the land and oceans, replenishing \nfreshwater sources and completing the cycle National Oceanic and Atmospheric \nAdministration+2. The type and amount of precipitation depend on temperature, cloud type, \nand atmospheric conditions. Together, these three processes form a continuous cycle that distributes water across the \nplanet, supports ecosystems, and in\ufb02uences weather and climate patterns",
+      "metadata": {
+        "filename": "ask.pdf",
+        "doc_id": "55ac02ad-4439-4f4f-a54e-a6c6edc01d67",
+        "chunk_index": 1
+      },
+      "score": 6.840701103210449
+    },
+    {
+      "text": " can drive atmospheric circulation NASA. Precipitation \nPrecipitation occurs when condensed water droplets or ice crystals in clouds grow large \nenough to fall to the Earth's surface due to gravity.\nThis includes rain, snow, sleet, or hail. Precipitation returns water from the atmosphere to the land and oceans, replenishing \nfreshwater sources and completing the cycle National Oceanic and Atmospheric \nAdministration+2. The type and amount of precipitation depend on temperature, cloud type, \nand atmospheric conditions. Together, these three processes form a continuous cycle that distributes water across the \nplanet, supports ecosystems, and in\ufb02uences weather and climate patterns",
+      "metadata": {
+        "doc_id": "17442de6-fcee-42cb-b804-451d3e50c248",
+        "chunk_index": 1,
+        "filename": "ask.pdf"
+      },
+      "score": 6.840701103210449
+    }
+  ],
+  "answer": "Based on the provided context, precipitation occurs when condensed water droplets or ice crystals in clouds grow large enough to fall to the Earth's surface due to gravity. It includes rain, snow, sleet, or hail, and it returns water from the atmosphere to the land and oceans, replenishing freshwater sources.\n\nSource: ask.pdf",
+  "sources": [
+    "ask.pdf"
+  ],
+  "followups": [
+    "What are the other two processes that complete the continuous water cycle?",
+    "How do atmospheric conditions determine whether rain, snow, sleet, or hail falls?",
+    "How does precipitation drive atmospheric circulation and influence climate patterns?"
+  ]
+}
