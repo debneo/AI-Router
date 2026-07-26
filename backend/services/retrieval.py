@@ -31,13 +31,17 @@ def retrieve(
     scores = _reranker.predict([(question,d) for d in docs])
     ranked = sorted(zip(docs,metas,scores), key = lambda x: x[2], reverse=True)
 
-    selected, used_tokens = [],0
+    selected, used_tokens, seen = [],0, set()
     for doc, meta,score in ranked:
         if score < min_score:
             continue
+        key = doc.strip()
+        if key in seen:
+            continue # drop duplicate chunks
         t = count_tokens(doc)
         if used_tokens + t > token_budget:
             continue # skip chunks that dont fit budget
+        seen.add(key)
         selected.append({"text":doc, "metadata":meta, "score": float(score)})
         used_tokens += t
         if len(selected) >= final_k:
