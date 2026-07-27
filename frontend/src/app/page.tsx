@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { ingestFile, askQuestion } from "@/lib/api";
+import { ingestFile, chatStream } from "@/lib/api";
 
 export default function Home(){
     const [status,setStatus] = useState("");
@@ -27,9 +27,11 @@ export default function Home(){
         setAnswer("");
         setSources([]);
         try{
-            const r = await askQuestion(input);
-            setAnswer(r.response);
-            setSources(r.sources ?? []);
+            // Stream tokens as they arrive: Sources 1st, then answer word by word
+            for await (const rsp of chatStream(input)){
+                if(rsp.type === "sources") setSources(rsp.sources);
+                if(rsp.type === "token") setAnswer((a) => a + rsp.token);
+            }
         } catch (error:any) {
             setStatus(`Error: ${error.message}`);
         } finally {
