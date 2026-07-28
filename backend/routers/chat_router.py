@@ -6,6 +6,7 @@ import json
 from lib.connectors.llm import get_llm
 from services.retrieval import retrieve
 from services.rag import SYSTEM, build_context, answer_question
+from solutions.qa.agents.answer_agent import followups_agent
 
 # router is a mini app
 router = APIRouter(tags=["Chat"])
@@ -51,6 +52,9 @@ def chat_stream(req:ChatRequest):
             ]
         ):
             yield f"data: {json.dumps({'type':'token','token':token})}\n\n"
+        #After the answer is complete, generate followup questions and stream them as well
+        followups = followups_agent({"chunks": chunks}).get("followups",[])
+        yield f"data: {json.dumps({'type':'followups','followups':followups})}\n\n"
         yield f"data: {json.dumps({'type':'done'})}\n\n"
 
     return StreamingResponse(event_stream(), media_type="text/event-stream")
