@@ -1,0 +1,16 @@
+data: {"type": "sources", "sources": ["elec.pdf"]}
+
+data: {"type": "token", "token": "Based on the provided context, a diode is described as having the following characteristics and functions:\n\n* It"}
+
+data: {"type": "token", "token": " has a PN junction doped with impurities, where the P-region is lightly doped and the N-region is heavily doped.\n* Diod"}
+
+data: {"type": "token", "token": "es (such as silicon diodes) have a certain reference voltage.\n* A diode can function as a switch:\n  * When the applied"}
+
+data: {"type": "token", "token": " voltage is below the reference voltage, its resistance decreases, making it **forward-biased** (acting as a closed switch).\n"}
+
+data: {"type": "token", "token": "  * When the applied voltage exceeds the threshold, its resistance increases, making it **reverse-biased** (acting as"}
+
+data: {"type": "token", "token": " an open switch).\n\n**Source:** elec.pdf"}
+
+data: {"type": "done"}
+
