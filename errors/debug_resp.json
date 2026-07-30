@@ -1,16 +1,30 @@
-data: {"type": "sources", "sources": ["elec.pdf"]}
+(.venv) PS E:\CODE\AI Router\backend> python .\debug.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|███████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 7752.32it/s]
+Loading weights: 100%|███████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 5914.21it/s]
 
-data: {"type": "token", "token": "Based on the provided context, a diode is described as having the following characteristics and functions:\n\n* It"}
+======================================================================
+[QUESTION] What is precipitation?
 
-data: {"type": "token", "token": " has a PN junction doped with impurities, where the P-region is lightly doped and the N-region is heavily doped.\n* Diod"}
+[HISTORY] 0 messages for session 'debug-session':
 
-data: {"type": "token", "token": "es (such as silicon diodes) have a certain reference voltage.\n* A diode can function as a switch:\n  * When the applied"}
+[REWRITTEN QUERY] 'What is precipitation?'
+     no rewrite happened
 
-data: {"type": "token", "token": " voltage is below the reference voltage, its resistance decreases, making it **forward-biased** (acting as a closed switch).\n"}
+[RETRIEVED] 2 chunks for rewritten query:
+ score=6.84 file=ask.pdf ::  can drive atmospheric circulation NASA. Precipitation 
+Precipitation occurs whe
+ score=1.13 file=ask.pdf :: Evaporation, condensation, and precipitation are key stages of the water cycle t
 
-data: {"type": "token", "token": "  * When the applied voltage exceeds the threshold, its resistance increases, making it **reverse-biased** (acting as"}
+======================================================================
+[QUESTION] What forms does it take
 
-data: {"type": "token", "token": " an open switch).\n\n**Source:** elec.pdf"}
+[HISTORY] 2 messages for session 'debug-session':
+  user:What is precipitation?
+  assisstant:Precipitation is rain, snow, or hail that falls on EARTH
 
-data: {"type": "done"}
+[REWRITTEN QUERY] 'What forms does precipitation take?'
 
+[RETRIEVED] 1 chunks for rewritten query:
+ score=4.01 file=ask.pdf ::  can drive atmospheric circulation NASA. Precipitation 
+Precipitation occurs whe
