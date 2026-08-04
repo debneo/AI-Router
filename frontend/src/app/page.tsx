@@ -70,6 +70,7 @@ export default function Home(){
                 if(rsp.type === "sources") setSources(rsp.sources);
                 if(rsp.type === "token") fullTextRef.current += rsp.token;
                 if(rsp.type === "followups") setFollowups(rsp.followups);
+                if(rsp.type === "error") fullTextRef.current += `\n[Error:${rsp.message}]`;
             }
         } catch (error:any) {
             fullTextRef.current += `\n\nError: ${error.message}`;

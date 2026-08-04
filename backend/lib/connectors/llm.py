@@ -1,9 +1,24 @@
 import os
+import time
 from typing import Iterator,Protocol
 
 
 # "message" is {"role": "system"|"user"|"assistant", "content":"..."}
 Messages = list[dict]
+
+def _retry(fn, attempts:int=4, base_delay:float=2.0):
+    """Call fn(): on a rate-limit (429) error, wait and retry with exponential backoff.
+    Survives transient free-tier bursts instead of crashing the request."""
+    for i in range(attempts):
+        try:
+            return fn()
+        except Exception as e:
+            msg = str(e).lower()
+            is_rate_limit = "429" in msg or "rate limit" in msg or "resource exhausted" in msg
+            if is_rate_limit and i < attempts - 1:
+                time.sleep(base_delay * (2 ** i))  # 2s, 4s, 8s ...
+                continue
+            raise
 
 class LLMClient(Protocol):
     """The one interface the rest of the app depends on.
@@ -47,16 +62,20 @@ class GeminiClient:
         return "\n".join(f"{m['role']}: {m['content']}" for m in messages)
 
     def complete(self, messages: Messages) -> str:
-        response = self.client.models.generate_content(
-            model=self.model_name,
-            contents=self._to_prompt(messages)
+        response = _retry(
+            lambda: self.client.models.generate_content(
+                model=self.model_name,
+                contents=self._to_prompt(messages),
+            )
         )
         return response.text
 
     def stream(self, messages: Messages) -> Iterator[str]:
-        response_stream = self.client.models.generate_content_stream(
-            model=self.model_name,
-            contents=self._to_prompt(messages)
+        response_stream = _retry(
+            lambda: self.client.models.generate_content_stream(
+                model=self.model_name,
+                contents=self._to_prompt(messages)
+            )
         )
         for chunk in response_stream:
             if chunk.text:

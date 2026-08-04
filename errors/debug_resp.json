@@ -1,30 +1,6 @@
-(.venv) PS E:\CODE\AI Router\backend> python .\debug.py
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights: 100%|███████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 7752.32it/s]
-Loading weights: 100%|███████████████████████████████████████████████████████████████| 105/105 [00:00<00:00, 5914.21it/s]
-
-======================================================================
-[QUESTION] What is precipitation?
-
-[HISTORY] 0 messages for session 'debug-session':
-
-[REWRITTEN QUERY] 'What is precipitation?'
-     no rewrite happened
-
-[RETRIEVED] 2 chunks for rewritten query:
- score=6.84 file=ask.pdf ::  can drive atmospheric circulation NASA. Precipitation 
-Precipitation occurs whe
- score=1.13 file=ask.pdf :: Evaporation, condensation, and precipitation are key stages of the water cycle t
-
-======================================================================
-[QUESTION] What forms does it take
-
-[HISTORY] 2 messages for session 'debug-session':
-  user:What is precipitation?
-  assisstant:Precipitation is rain, snow, or hail that falls on EARTH
-
-[REWRITTEN QUERY] 'What forms does precipitation take?'
-
-[RETRIEVED] 1 chunks for rewritten query:
- score=4.01 file=ask.pdf ::  can drive atmospheric circulation NASA. Precipitation 
-Precipitation occurs whe
+{"ts": 1785839309.659, "event": "chat_stream_prompt", "question": "What is precipitation?", "rewritten": "What is precipitation?", "chunks": 2, "history_msgs": 18, "prompt_tokens": 1088}
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:streamGenerateContent?alt=sse "HTTP/1.1 200 OK"
+{"ts": 1785839313.173, "event": "chat_stream_answer", "answer_tokens": 127}
+INFO:google_genai.models:AFC is enabled with max remote calls: 10.
+INFO:httpx:HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent "HTTP/1.1 200 OK"
